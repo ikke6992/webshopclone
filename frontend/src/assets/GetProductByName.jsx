@@ -25,17 +25,20 @@ const StarRating = (score) => {
     );
 };
 
-function GetProductById(props) {
+function GetProductByName(props) {
     const [item, setItem] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:8080/api/v1/products/findall`);
-            setItem(result.data[props.id]);
+
+            let productId;
+            const getProducts = await axios.get("http://localhost:8080/api/v1/products/findall");
+            getProducts.data.forEach((product) =>
+                product.name.toUpperCase() == props.productName.toUpperCase() ? setItem(product) : '');
         };
 
         fetchData();
-    }, [props.id])
+    }, [props.productName])
 
     if (item !== undefined) {
         const reviews = item.reviews.map(review => {
@@ -69,4 +72,4 @@ function GetProductById(props) {
     }
 }
 
-export default GetProductById
+export default GetProductByName

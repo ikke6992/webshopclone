@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import './App.css'
-import GetProductById from './assets/GetProductById';
+import GetProductById from './assets/GetProductById'
+import GetProductByName from './assets/GetProductByName'
 import AddReview from './assets/AddReview'
 
+
 function App() {
-  const [id, setId] = useState('');
-  const [tempId, setTempId] = useState('');
+  const [name, setName] = useState('');
+  const [tempName, setTempName] = useState('');
   const [displayForm, setDisplayForm] = useState(false);
 
   const handleFormSubmit = () => {
-    setId(tempId - 1);
+    setName(tempName);
     setDisplayForm(true);
   }
 
@@ -21,13 +23,13 @@ function App() {
           handleFormSubmit();
         }}>
           <label>
-            product id: <input type='text' placeholder='id' value={tempId} onChange={(e) => { setTempId(e.target.value) }} />
+            product name: <input type='text' placeholder='product name' value={tempName} onChange={(e) => { setTempName(e.target.value) }} />
           </label>
           <button type='submit'>Submit</button>
         </form>
       </div>
 
-      {displayForm && <GetProductById id={id} />}
+      {displayForm && <GetProductByName productName={name} />}
 
       <AddReview />
     </>
