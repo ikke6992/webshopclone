@@ -23,6 +23,10 @@ public class CategoryService {
         return categoryRepository.findById(id);
     }
 
+    public Optional<Category> getCategoryByName(String name) {
+        return categoryRepository.findByNameIgnoreCase(name);
+    }
+
     public Category createCategory(String name) {
         Category category = new Category(name);
         categoryRepository.save(category);

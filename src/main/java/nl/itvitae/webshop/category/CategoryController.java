@@ -32,6 +32,16 @@ public class CategoryController {
         }
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Category> getCategoryByName(@PathVariable String name) {
+        Optional<Category> optionalCategory = categoryService.getCategoryByName(name);
+        if (optionalCategory.isPresent()) {
+            return ResponseEntity.ok(optionalCategory.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     private record CategoryData(String name) {}
     @PostMapping("/new")
     public ResponseEntity<Category> createCategory(@RequestBody CategoryData categoryData,
