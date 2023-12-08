@@ -9,15 +9,17 @@ import lombok.Setter;
 import nl.itvitae.webshop.product.Product;
 import nl.itvitae.webshop.user.User;
 
+import java.util.UUID;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity(name = "review")
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Getter(AccessLevel.NONE)
-    private Long id;
+    private UUID id;
 
     private int score;
 

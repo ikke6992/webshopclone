@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -27,7 +28,7 @@ public class ReviewController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Review> getReviewById(@PathVariable long id) {
+    public ResponseEntity<Review> getReviewById(@PathVariable UUID id) {
         Optional<Review> optionalReview = reviewService.getReviewById(id);
         if (optionalReview.isPresent()) {
             return ResponseEntity.ok(optionalReview.get());
@@ -39,8 +40,8 @@ public class ReviewController {
     private record ReviewData(int score, String description) {}
     @PostMapping("/new/{user_id}/{product_id}")
     public ResponseEntity<Review> createReview(@RequestBody ReviewData reviewData,
-                                             @PathVariable(value="user_id") long userId,
-                                             @PathVariable(value="product_id") long productId,
+                                             @PathVariable(value="user_id") UUID userId,
+                                             @PathVariable(value="product_id") UUID productId,
                                              UriComponentsBuilder ucb) {
         Optional<User> user = userService.getUserById(userId);
         Optional<Product> product = productService.getProductById(productId);

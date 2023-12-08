@@ -8,6 +8,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class CategoryController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable long id) {
+    public ResponseEntity<Category> getCategoryById(@PathVariable UUID id) {
         Optional<Category> optionalCategory = categoryService.getCategoryById(id);
         if (optionalCategory.isPresent()) {
             return ResponseEntity.ok(optionalCategory.get());

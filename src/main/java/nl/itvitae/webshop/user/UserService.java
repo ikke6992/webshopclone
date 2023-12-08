@@ -1,6 +1,7 @@
 package nl.itvitae.webshop.user;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> getUserById(long id) {
+    public Optional<User> getUserById(UUID id) {
         return userRepository.findById(id);
     }
 }

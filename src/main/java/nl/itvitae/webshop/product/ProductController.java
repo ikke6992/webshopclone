@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable long id) {
+    public ResponseEntity<Product> getProduct(@PathVariable UUID id) {
         Optional<Product> optionalProduct = productService.getProductById(id);
         if (optionalProduct.isPresent()) {
             return ResponseEntity.ok(optionalProduct.get());
@@ -38,7 +39,7 @@ public class ProductController {
 
     private record ProductData(String name, BigDecimal price) {}
     @PostMapping("/new/{id}")
-    public ResponseEntity<Product> createProduct(@PathVariable long id,
+    public ResponseEntity<Product> createProduct(@PathVariable UUID id,
                                                  @RequestBody ProductData productData,
                                                  UriComponentsBuilder ucb) {
         Optional<Category> category = categoryService.getCategoryById(id);

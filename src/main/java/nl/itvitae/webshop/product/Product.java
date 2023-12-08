@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -19,7 +20,7 @@ public class Product {
 
     @Id
     @GeneratedValue
-    private long id;
+    private UUID id;
 
     private String name;
     private BigDecimal price;

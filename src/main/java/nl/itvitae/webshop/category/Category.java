@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import nl.itvitae.webshop.product.Product;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,7 +15,7 @@ public class Category {
 
     @Id
     @GeneratedValue
-    private long id;
+    private UUID id;
 
     private String name;
 

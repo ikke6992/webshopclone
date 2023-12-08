@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -19,7 +20,7 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public Optional<Review> getReviewById(long id) {
+    public Optional<Review> getReviewById(UUID id) {
         return reviewRepository.findById(id);
     }
 
