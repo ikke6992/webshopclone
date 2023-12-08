@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import GetProductById from './assets/GetProductById'
 import GetProductByName from './assets/GetProductByName'
 import AddReview from './assets/AddReview'
 
